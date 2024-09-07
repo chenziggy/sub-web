@@ -1,8 +1,9 @@
 # ---- Dependencies ----
 FROM node:16-alpine AS build
 WORKDIR /app
-COPY . .
+COPY package.json yarn.lock ./
 RUN yarn install
+COPY . .
 RUN yarn build
 
 FROM nginx:1.24-alpine
