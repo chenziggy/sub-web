@@ -33,13 +33,14 @@
                   </el-autocomplete>
                 </el-form-item>
                 <el-form-item label="远程配置:">
-                  <el-select v-model="form.remoteConfig" allow-create filterable placeholder="请选择" style="width: 100%">
+                  <el-input v-model="form.remoteConfig" placeholder="请输入远程配置链接"></el-input>
+                  <!-- <el-select v-model="form.remoteConfig" allow-create filterable placeholder="请选择" style="width: 100%">
                     <el-option-group v-for="group in options.remoteConfig" :key="group.label" :label="group.label">
                       <el-option v-for="item in group.options" :key="item.value" :label="item.label"
                         :value="item.value"></el-option>
                     </el-option-group>
                     <el-button slot="append" @click="gotoRemoteConfig" icon="el-icon-link">配置示例</el-button>
-                  </el-select>
+                  </el-select> -->
                 </el-form-item>
                 <el-form-item label="Include:">
                   <el-input v-model="form.includeRemarks" placeholder="节点名包含的关键字，支持正则" />
@@ -314,7 +315,7 @@ export default {
         sourceSubUrl: "",
         clientType: "",
         customBackend: "http://www.ziggycs.top:25500/sub?",
-        remoteConfig: "",
+        remoteConfig: "https://raw.githubusercontent.com/chenziggy/rule/main/ziggy.ini",
         excludeRemarks: "",
         includeRemarks: "",
         filename: "",
