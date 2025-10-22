@@ -511,7 +511,8 @@ export default {
         this.$message.error("请先生成订阅链接");
         return false;
       }
-      this.$axios.post({
+      this.$axios({
+        method: 'POST',
         url: `${window.origin.replace('25501', '25502')}/save`,
         data: {
           url: this.customSubUrl
