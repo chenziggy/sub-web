@@ -138,7 +138,9 @@
                   :disabled="customSubUrl.length === 0">生成短链接</el-button>
                 <!-- <el-button style="width: 140px" type="primary" @click="surgeInstall" icon="el-icon-connection">一键导入Surge</el-button> -->
               </el-form-item>
-
+              <el-form-item label-width="0px" style="text-align: center">
+                <el-button style="width: 290px" type="primary" @click="handleZiggy">发送到ziggy</el-button>
+              </el-form-item>
               <el-form-item label-width="0px" style="text-align: center">
                 <el-button style="width: 140px" type="primary" @click="dialogUploadConfigVisible = true"
                   icon="el-icon-upload" :loading="loading">上传配置</el-button>
@@ -149,7 +151,7 @@
                 <el-button style="width: 290px" type="primary" @click="dialogLoadConfigVisible = true"
                   icon="el-icon-copy-document" :loading="loading">从 URL 解析</el-button>
               </el-form-item>
-            </el-form>
+            </el-form-item>
           </el-container>
         </el-card>
       </el-col>
@@ -503,6 +505,18 @@ export default {
 
       this.$copyText(this.customSubUrl);
       this.$message.success("定制订阅已复制到剪贴板");
+    },
+    handleZiggy() {
+      if (this.customSubUrl === "") {
+        this.$message.error("请先生成订阅链接");
+        return false;
+      }
+      this.$axios.post({
+        url: `${window.origin.replace('25501', '25502')}/save`,
+        data: {
+          url: this.customSubUrl
+        }
+      })
     },
     makeShortUrl() {
       if (this.customSubUrl === "") {
