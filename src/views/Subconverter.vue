@@ -151,7 +151,7 @@
                 <el-button style="width: 290px" type="primary" @click="dialogLoadConfigVisible = true"
                   icon="el-icon-copy-document" :loading="loading">从 URL 解析</el-button>
               </el-form-item>
-            </el-form-item>
+            </el-form>
           </el-container>
         </el-card>
       </el-col>
