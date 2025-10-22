@@ -255,7 +255,7 @@ export default {
             options: [
               {
                 label: 'ziggy',
-                value: 'https://raw.githubusercontent.com/chenziggy/rule/main/ziggy.ini'
+                value: 'https://raw.githubusercontent.com/chenziggy/rule/main/ziggylite.ini'
               },
               {
                 label: "Maying",
@@ -315,7 +315,7 @@ export default {
         sourceSubUrl: "",
         clientType: "",
         customBackend: "http://www.ziggycs.top:25500/sub?",
-        remoteConfig: "https://raw.githubusercontent.com/chenziggy/rule/main/ziggy.ini",
+        remoteConfig: "https://raw.githubusercontent.com/chenziggy/rule/main/ziggylite.ini",
         excludeRemarks: "",
         includeRemarks: "",
         filename: "",
