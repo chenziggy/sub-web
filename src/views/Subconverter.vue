@@ -517,6 +517,12 @@ export default {
         data: {
           url: this.customSubUrl
         }
+      }).then(res => {
+        if (res.code === 200) {
+          this.$message.success('已发送至ziggy')
+        } else {
+          this.$message.error('发送至ziggy失败：' + res)
+        }
       })
     },
     makeShortUrl() {
