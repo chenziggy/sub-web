@@ -518,10 +518,10 @@ export default {
           url: this.customSubUrl
         }
       }).then(res => {
-        if (res.code === 200) {
+        if (res.data.code === 200) {
           this.$message.success('已发送至ziggy')
         } else {
-          this.$message.error('发送至ziggy失败：' + JSON.stringify(res))
+          this.$message.error('发送至ziggy失败：' + JSON.stringify(res.data))
         }
       })
     },
