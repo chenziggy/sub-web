@@ -316,7 +316,7 @@ export default {
       form: {
         sourceSubUrl: "",
         clientType: "",
-        customBackend: "http://www.ziggycs.top:25500/sub?",
+        customBackend: "http://192.168.100.3:25500/sub?",
         remoteConfig: "https://raw.githubusercontent.com/chenziggy/rule/main/ziggylite.ini",
         excludeRemarks: "",
         includeRemarks: "",
