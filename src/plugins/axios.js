@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import axios from "axios"
 
-axios.defaults.timeout = 30000 //请求超时的时间设定
+axios.defaults.timeout = 120000 //请求超时的时间设定
 
 Vue.prototype.$axios = axios
