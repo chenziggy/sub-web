@@ -206,6 +206,7 @@ const defaultBackend = process.env.VUE_APP_SUBCONVERTER_DEFAULT_BACKEND + '/sub?
 const shortUrlBackend = process.env.VUE_APP_MYURLS_API
 const configUploadBackend = process.env.VUE_APP_CONFIG_UPLOAD_API
 const tgBotLink = process.env.VUE_APP_BOT_LINK
+import { Loading } from 'element-ui';
 
 export default {
   data() {
@@ -511,6 +512,7 @@ export default {
         this.$message.error("请先生成订阅链接");
         return false;
       }
+      let loadingInstance  = Loading.service({ fullscreen: true });
       this.$axios({
         method: 'POST',
         url: `${window.origin.replace('25501', '25502')}/save`,
@@ -523,6 +525,8 @@ export default {
         } else {
           this.$message.error('发送至ziggy失败：' + JSON.stringify(res.data))
         }
+      }).finally(() => {
+        loadingInstance.close()
       })
     },
     makeShortUrl() {
