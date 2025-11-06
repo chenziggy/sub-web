@@ -315,7 +315,7 @@ export default {
         ]
       },
       form: {
-        sourceSubUrl: "",
+        sourceSubUrl: localStorage.getItem('url') || "",
         clientType: "",
         customBackend: "http://192.168.100.3:25500/sub?",
         remoteConfig: "https://raw.githubusercontent.com/chenziggy/rule/main/ziggylite.ini",
@@ -511,6 +511,10 @@ export default {
       if (this.customSubUrl === "") {
         this.$message.error("请先生成订阅链接");
         return false;
+      }
+      const originUrl = localStorage.getItem('url')
+      if (originUrl !== this.form.sourceSubUrl && this.form.sourceSubUrl) {
+      localStorage.setItem('url',  this.form.sourceSubUrl)
       }
       let loadingInstance  = Loading.service({ fullscreen: true });
       this.$axios({
