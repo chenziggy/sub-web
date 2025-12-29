@@ -132,10 +132,10 @@
               </el-form-item>
 
               <el-form-item label-width="0px" style="margin-top: 40px; text-align: center">
-                <el-button style="width: 140px" type="danger" @click="makeUrl"
+                <el-button style="width: 290px" type="danger" @click="makeUrl"
                   :disabled="form.sourceSubUrl.length === 0">生成订阅链接</el-button>
-                <el-button style="width: 140px" type="danger" @click="makeShortUrl" :loading="loading"
-                  :disabled="customSubUrl.length === 0">生成短链接</el-button>
+                <!-- <el-button style="width: 140px" type="danger" @click="makeShortUrl" :loading="loading"
+                  :disabled="customSubUrl.length === 0">生成短链接</el-button> -->
                 <!-- <el-button style="width: 140px" type="primary" @click="surgeInstall" icon="el-icon-connection">一键导入Surge</el-button> -->
               </el-form-item>
               <el-form-item label-width="0px" style="text-align: center">
@@ -258,7 +258,7 @@ export default {
             options: [
               {
                 label: 'ziggy',
-                value: 'https://raw.githubusercontent.com/chenziggy/rule/main/ziggylite.ini'
+                value: 'https://raw.githubusercontent.com/chenziggy/rule/refs/heads/main/ziggylite.ini'
               },
               {
                 label: "Maying",
@@ -318,7 +318,7 @@ export default {
         sourceSubUrl: localStorage.getItem('url') || "",
         clientType: "",
         customBackend: "http://192.168.100.3:25500/sub?",
-        remoteConfig: "https://raw.githubusercontent.com/chenziggy/rule/main/ziggylite.ini",
+        remoteConfig: "https://raw.githubusercontent.com/chenziggy/rule/refs/heads/main/ziggylite.ini",
         excludeRemarks: "",
         includeRemarks: "",
         filename: "",
@@ -371,6 +371,7 @@ export default {
     // 获取 url cache
     if (process.env.VUE_APP_USE_STORAGE === 'true') {
       this.form.sourceSubUrl = this.getLocalStorageItem('sourceSubUrl')
+      console.log("🚀 ~ this.form.sourceSubUrl:", this.form.sourceSubUrl)
     }
   },
   mounted() {
@@ -529,6 +530,8 @@ export default {
         } else {
           this.$message.error('发送至ziggy失败：' + JSON.stringify(res.data))
         }
+      }).catch(() => {
+        this.$message.error('发送至ziggy失败 接口异常')
       }).finally(() => {
         loadingInstance.close()
       })
