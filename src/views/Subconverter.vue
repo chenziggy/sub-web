@@ -371,7 +371,6 @@ export default {
     // 获取 url cache
     if (process.env.VUE_APP_USE_STORAGE === 'true') {
       this.form.sourceSubUrl = this.getLocalStorageItem('sourceSubUrl')
-      console.log("🚀 ~ this.form.sourceSubUrl:", this.form.sourceSubUrl)
     }
   },
   mounted() {
